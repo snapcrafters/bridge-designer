@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Bridge Designer 2016
+Exec=bridge-designer %F
+Icon=${SNAP}/meta/gui/bridge-designer.png
+Terminal=false
+StartupNotify=true
+StartupWMClass=bdv16j243.exe

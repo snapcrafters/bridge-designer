@@ -1,0 +1,84 @@
+name: bridge-designer
+title: The Bridge Designer 2016
+version: "v16j243"
+summary: "Design a highway truss bridge: a realistic introduction to engineering"
+description: |
+  The Bridge Designer will provide you with a realistic introduction to engineering through an authentic, hands-on design experience. This software provides you with the tools to model, test, and optimize a steel highway bridge, based on realistic specifications, constraints, and performance criteria.
+
+  Note: This snap uses the Wine compatibility layer to run this Windows application on Linux.
+grade: stable
+
+base: core18
+confinement: strict
+
+architectures:
+  - build-on: amd64
+
+environment:
+  WINEDLLOVERRIDES: "$WINEDLLOVERRIDES;mscoree,mshtml="    # Prevent pop-ups about Wine Mono and Wine Gecko
+  SNAP_SOMMELIER_STRICT: "1"                               # Make Sommelier exit when unset variable is used. (useful to find bugs)
+  DEFAULT_THEME: "1"
+
+apps:
+  bridge-designer:
+    extensions: [ gnome-3-28 ]
+    command: bin/sommelier run-exe
+    environment:
+      RUN_EXE: "C:/Program Files (x86)/Bridge Designer 2016 (2nd Edition)/bdv16j243.exe"
+      INSTALL_EXE: "$SNAP/setupbdv16j.exe"
+      INSTALL_FLAGS: "/S"
+    plugs:
+      - home
+      - network
+      - network-bind
+      - opengl
+  # The wine command can be used to run applications inside the wine
+  # environment that this snap uses.
+  #
+  # For example, users can configure the wine environment of this snap
+  # by running `myapp.wine winecfg`.
+  wine:
+    extensions: [ gnome-3-28 ]
+    command: bin/sommelier
+    plugs:
+      - home
+      - network
+  # The winetricks command can be used to run winetricks inside the wine
+  # environment that this snap uses.
+  winetricks:
+    extensions: [ gnome-3-28 ]
+    command: bin/sommelier winetricks
+    plugs:
+      - network
+
+parts:
+  installer:
+    plugin: dump
+    source: installer
+
+  # The sommelier script helps you snap Windows applications using Wine. It 
+  # initialises and configures Wine and installs the Windows application.
+  #
+  # This part is copied straight from the sommelier-core repository. Please
+  # periodically check the source for updates and copy the changes.
+  #    https://github.com/snapcrafters/sommelier-core
+  #
+  sommelier:
+    plugin: make
+    source: https://github.com/snapcrafters/sommelier-core.git
+
+# These plugs are used to connect the snap to the wine runtime.
+#
+# These plugs are copied straight from the sommelier-core repository. Please
+# periodically check the source for updates and copy the changes.
+#    https://github.com/snapcrafters/sommelier-core
+#
+plugs:
+  wine-runtime:
+    interface: content
+    target: $SNAP/wine-runtime
+    default-provider: wine-platform-runtime
+  wine-5-stable:
+    interface: content
+    target: $SNAP/wine-platform
+    default-provider: wine-platform-5-stable
