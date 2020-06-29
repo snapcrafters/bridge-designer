@@ -1,11 +1,13 @@
 name: bridge-designer
-title: The Bridge Designer 2016
+title: Bridge Designer 2016
 version: "v16j243"
 summary: "Design a highway truss bridge: a realistic introduction to engineering"
 description: |
   The Bridge Designer will provide you with a realistic introduction to engineering through an authentic, hands-on design experience. This software provides you with the tools to model, test, and optimize a steel highway bridge, based on realistic specifications, constraints, and performance criteria.
 
-  Note: This snap uses the Wine compatibility layer to run this Windows application on Linux.
+  *Note: This Windows application runs on Linux using the Wine compatibility layer.*
+icon: snap/gui/bridge-designer.png
+license: Apache-2.0
 grade: stable
 
 base: core18
