@@ -3,7 +3,7 @@
 This is the snap for the [Bridge Designer 2016](https://bridgedesigner.org/). It works on
 Ubuntu, Fedora, Debian, and other major Linux distributions.
 
-This Windows application runs on Linux using the Wine compatibility layer. For that reason, it may not function as expected. If you encounter issues please report them to this GitHub project.
+This Windows application runs on Linux using the Wine compatibility layer. For that reason, it may not function as expected. If you encounter issues please report in the issue tracker of this repository.
 
 *Published for <img src="http://anything.codes/slack-emoji-for-techies/emoji/tux.png" align="top" width="24" /> with :gift_heart: by Snapcrafters*
 
@@ -17,7 +17,9 @@ snap install bridge-designer
 
 ## Reusing this snap
 
-This snap is built using the [sommelier-core](https://github.com/snapcrafters/sommelier-core) script. This script helps you create snaps for Windows applications. Feel free to snap your favorite Windows application using this as a source.
+You can use this snap as a reference for creating snaps of other Windows applications. See the [sommelier-core](https://github.com/snapcrafters/sommelier-core) repo for more information on how to snap a Windows application.
+
+If you have any questions about creating snaps of Windows applications then [post in the Snapcraft forum](https://forum.snapcraft.io).
 
 ## License
 
